@@ -107,7 +107,9 @@ int main() {
         calculateWeight(tracks[i], stations);
     }
     int src, dest;
+    //statically type in the source station's ID
     src = 2;
+    //statically type in the destination station's ID
     dest = 0;
     if(src<dest){
         //running Dijkstra's algorithm
