@@ -43,7 +43,7 @@ struct track* createTrack(int source, int destination, bool electrified, int mai
 void calculateWeight(struct track* t, struct station** stations) {
     t->weight = 0.3 * t->length + 0.2 / t->maintenance;
     t->weight += 0.1 * (1 - stations[t->source]->MajorJunction) + 0.1 * (1 - stations[t->destination]->MajorJunction);
-    t->weight += 0.3 * t->electrified;
+    t->weight += 0.3 * (1 - t->electrified);
 }
 //finding the minimum weight vertex not yet visited
 int minWeightVertex(struct track* tracks) {
@@ -108,9 +108,9 @@ int main() {
     }
     int src, dest;
     //statically type in the source station's ID
-    src = 2;
+    src = 0;
     //statically type in the destination station's ID
-    dest = 0;
+    dest = 4;
     if(src<dest){
         //running Dijkstra's algorithm
         dijkstra(tracks, src);
